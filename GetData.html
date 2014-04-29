@@ -1,0 +1,103 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+
+
+var hours = new Array();
+var temperature = new Array();
+function loadXMLDoc() {
+                req=new XMLHttpRequest();
+		//req.open("GET","http://130.111.222.81/Webpages/Orono_forecast.txt",true);
+                req.onreadystatechange=function() {
+                        if (req.readyState==4 && req.status==200)
+			 {
+                                document.getElementById("div1").innerHTML=req.responseText;
+			//	allText = req.responseText;
+			//	lines = txtFile.responseText.split("\n"); 
+			//	var hours = new Array();
+			//	var temperature = new Array();
+			//	for(i = 7;i<31;i++) {
+			//		data = lines[i].split(" ");
+			//		hours.push(data[4].responseText);
+					//temperature[i-7] = parsefloat(data[5]);
+			//		temperature.push(parsefloat(data[5]));
+					
+				}		
+                        }
+                 // end of onreadstatechange function
+                req.open("GET","http://130.111.222.81/Webpages/Orono_forecast.txt",true);
+                req.send();
+ 
+	//	document.write("Hello World");
+}
+
+
+/*
+$(function () {
+	//var hours;	
+	//var temperature;
+	loadXMLDoc.call();
+        $('#container').highcharts({
+            title: {
+                text: 'Hourly Temperature of Orono,Maine',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com',
+                x: -20
+            },
+            xAxis: {
+             //  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+               //     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		categories: hours
+            },
+            yAxis: {
+                title: {
+                    text: 'Temperature (°C)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '°C'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Temperature',
+              data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+		//data: temperature
+           }]
+        });
+   });
+    
+
+*/
+
+	</script>
+	</head>
+	<body>
+	<div id="div1"><h2>Let AJAX change this text</h2></div>
+	<button type="button" onclick="loadXMLDoc()">Change Content</button>
+<script src="./js/highcharts.js"></script>
+<script src="./js/exporting.js"></script>
+
+<!--
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+--!>
+
+	</body>
+</html>
